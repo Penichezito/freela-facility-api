@@ -46,6 +46,43 @@ Este projeto segue uma arquitetura de microserviços, composta por três compone
    - API Principal: http://localhost:8000
    - API de Processamento: http://localhost:5000
 
+## Repositórios de Componentes
+
+- [API Principal](https://github.com/seu-usuario/freela-facility-api)
+- [API de Processamento de Arquivos](https://github.com/seu-usuario/freela-facility-file-processor)
+- [Frontend](https://github.com/seu-usuario/freela-facility-frontend)
+
+## Configuração e Execução
+
+1. Clone este repositório principal:
+   \`\`\`bash
+   git clone https://github.com/seu-usuario/freela-facility.git
+   cd freela-facility
+   \`\`\`
+
+2. Clone os repositórios dos componentes:
+   \`\`\`bash
+   git clone https://github.com/seu-usuario/freela-facility-api.git
+   git clone https://github.com/seu-usuario/freela-facility-file-processor.git
+   git clone https://github.com/seu-usuario/freela-facility-frontend.git
+   \`\`\`
+
+3. Configure o arquivo .env (opcional):
+   \`\`\`bash
+   cp .env.example .env
+   # Edite o arquivo .env conforme necessário
+   \`\`\`
+
+4. Inicie os serviços com Docker Compose:
+   \`\`\`bash
+   docker-compose up -d
+   \`\`\`
+
+5. Acesse o sistema:
+   - Frontend: http://localhost:3000
+   - API Principal: http://localhost:8000/docs
+   - API de Processamento: http://localhost:5000/health
+
 ### Desenvolvimento Local (Sem Docker)
 
 Consulte os READMEs específicos em cada diretório de componente para instruções detalhadas de desenvolvimento local:

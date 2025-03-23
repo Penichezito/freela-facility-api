@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: 
+      context: ./freela-facility-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:8000/api/v1
+    depends_on:
+      - api
+    networks:
+      - freela-network
+    volumes:
+      - ./freela-facility-frontend/public:/app/public
+    restart: unless-stopped
+
+  api:
+    build: 
+      context: ./freela-facility-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/freela_facility
+      - FILE_PROCESSOR_URL=http://file-processor:5000/api
+      - SECRET_KEY=\${SECRET_KEY:-supersecretkey}
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+    depends_on:
+      - db
+      - file-processor
+    networks:
+      - freela-network
+    restart: unless-stopped
+
+  file-processor:
+    build: 
+      context: ./freela-facility-file-processor
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/freela_facility_files
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
+      - STORAGE_PATH=/data/files
+    depends_on:
+      - db
+    networks:
+      - freela-network
+    volumes:
+      - file-storage:/data/files
+    restart: unless-stopped
+
+  db:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=freela_facility,freela_facility_files
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-multiple-dbs.sh:/docker-entrypoint-initdb.d/init-multiple-dbs.sh
+    networks:
+      - freela-network
+    restart: unless-stopped
+
+networks:
+  freela-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  file-storage:
