@@ -1,18 +1,39 @@
 from fastapi import FastAPI, Depends, HTTPException
-from fastapi.midllware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from sqlalchemy.orm import Session
 import uvicorn
+from contextlib import asynccontextmanager
 
-from app.appi.v1.router import api_router
+from app.api.v1.router import api_router
 from app.core.security import get_current_active_user
-from app.db.databae import get_db, init_db
+from app.db.database import get_db, init_db
 from app.config import settings
 
+# Definição do gerenciador de contexto de ciclo de vida
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Código do evento "startup"
+    print("Iniciando a aplicação Freela Facility API...")
+    init_db()
+    print("Banco de dados inicializado com sucesso")
+    
+    yield  # Aplicação em execução
+    
+    # Código do evento "shutdown"
+    print("Encerrando a aplicação Freela Facility API...")
+    # Aqui você pode adicionar a limpeza de recursos, como:
+    # - Fechar conexões de banco de dados
+    # - Finalizar clientes HTTP
+    # - Liberar recursos do sistema
+    print("Recursos liberados, aplicação encerrada com sucesso")
+
+# Inicialização da aplicação com o lifespan
 app = FastAPI(
     title="Freela Facility API",
     description="API Principal para gerenciamento de freelancers, clientes, projetos e arquivos",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 # Configuração de CORS
@@ -33,11 +54,6 @@ app.add_middleware(
 
 # Inclusão da rota da API
 app.include_router(api_router, prefix="/api/v1")
-
-# Inicialização do banco de dados
-@app.on_event("startup")
-async def startup_event():
-    init_db()
 
 @app.get("/heath", tags=["Health"])
 def heath_check():
