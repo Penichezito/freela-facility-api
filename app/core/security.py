@@ -44,8 +44,10 @@ def get_password_hash(password: str) -> str:
     """
     return pwd_context.hash(password)
 
-def get_current_password(
-        de: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
+
+
+def get_current_user(
+        db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
 ) -> User:
     """
     Obtem o usuário atual a partir do token JWT
