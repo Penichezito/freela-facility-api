@@ -5,7 +5,7 @@ from datetime import datetime
 # Shared Properties
 class FileBase(BaseModel):
     filename: str
-    projects_id: int
+    project_id: int
 
 # Properties to receive via API on creation
 class FileCreate(FileBase):

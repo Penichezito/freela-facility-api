@@ -7,10 +7,10 @@ from app.db.models.user import User
 from app.api.v1.schemas.user import UserCreate, UserUpdate
 
 def get(db: Session, id: int) -> Optional[User]:
-    return db.quey(User).filter(User.id == id).first()
+    return db.query(User).filter(User.id == id).first()
 
 def get_by_email(db: Session, *, email:str) -> Optional[User]:
-    return db.query(User).filter(Usr.email == email).first()
+    return db.query(User).filter(User.email == email).first()
 
 def create(db: Session, *, obj_in: UserCreate) -> User:
     db_obj = User(

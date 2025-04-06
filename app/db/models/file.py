@@ -15,8 +15,8 @@ class File(Base):
     file_size = Column(BigInteger, nullable=False)
     content_type = Column(String, nullable=False)
     metadata = Column(Text)
-    uploader_id = Column(Integer, ForeignKey,("users.id"), nullable=False)
-    project_id = Column(Integer, ForeignKey,("projects.id"), nullable=False)
+    uploader_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 

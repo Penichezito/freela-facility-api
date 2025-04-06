@@ -9,7 +9,7 @@ def get(db: Session, id: int) -> Optional[File]:
     return db.query(File).filter(File.id == id).first()
 
 def get_multi(
-        db: Session, *, skip: int, int = 0, limit: int = 100
+        db: Session, *, skip: int = 0, limit: int = 100
 ) -> List[File]:
     return db.query(File).offset(skip).limit(limit).all()
 
@@ -52,7 +52,7 @@ def get_multi_by_owner_projects(
     db.add(db_obj)
     db.commit()
     db.refresh(db_obj)
-    
+
     return db_obj
 
 def update(

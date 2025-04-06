@@ -1,5 +1,4 @@
-version: '3.8'
-
+# Docker Compose file for the Freela Facility project
 services:
   frontend:
     build: 
