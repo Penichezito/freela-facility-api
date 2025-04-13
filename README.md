@@ -11,7 +11,7 @@ Este projeto segue uma arquitetura de microserviços, composta por três compone
 3. **API de Processamento de Arquivos (Flask)**: Especializada no processamento, categorização e armazenamento de arquivos.
 4. **Serviço Externo**: Google Cloud Vision API para análise e categorização automática de imagens.
 
-![Arquitetura do Sistema](diagrama-arquitetura.png)
+![Arquitetura do Sistema](https://github.com/Penichezito/freela-facility-api/blob/main/assets/Diagrama%20FreelaFacility-2025-04-13-113424.png)
 
 ## Requisitos
 
