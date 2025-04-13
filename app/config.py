@@ -29,9 +29,10 @@ class Settings(BaseSettings):
     FILE_PROCESSOR_URL: str = "http://localhost:5000"
 
     @validator("SQLALCHEMY_DATABASE_URI", pre=True)
-    def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
+    def assemble_db_connection(cls, v: Optional[str], info):  # Mudança na assinatura
         if isinstance(v, str):
-            return v
+            return v 
+        values = info.data  # Obter os valores de info.data
         return PostgresDsn.build(
             scheme="postgresql",
             user=values.get("POSTGRES_USER"),
