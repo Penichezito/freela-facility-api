@@ -2,7 +2,7 @@
 services:
   frontend:
     build: 
-      context: ./freela-facility-frontend
+      context: C:/Users/T/Projects/FreelaFacility/freela-facility-frontend
     ports:
       - "3000:3000"
     environment:
@@ -17,7 +17,7 @@ services:
 
   api:
     build: 
-      context: ./freela-facility-api
+      context: C:/Users/T/Projects/FreelaFacility/freela-facility-api
     ports:
       - "8000:8000"
     environment:
@@ -35,7 +35,7 @@ services:
 
   file-processor:
     build: 
-      context: ./freela-facility-file-processor
+      context: C:/Users/T/Projects/FreelaFacility/freela-facility-file-processor
     ports:
       - "5000:5000"
     environment:
