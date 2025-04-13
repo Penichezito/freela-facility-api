@@ -24,7 +24,7 @@ def get_db():
 # Function to initialize database
 def init_db():
     # Import all models here to ensure they are registered with SQLAlchemy
-    from app.db.models import user
+    from app.db.models.user import User
     from app.db.models.project import Project
     from app.db.models.file import File
 

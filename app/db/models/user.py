@@ -24,7 +24,7 @@ class User(Base):
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
     # Relationships
-    projects_owned = relationship("Project", back_populates="owner", foreign_keys="Projects.owner_id")
-    projects_client = relationship("Project", back_populates="client", foreing_keys="Project.client_id")
+    projects_owned = relationship("Project", back_populates="owner", foreign_keys="Project.owner_id")
+    projects_client = relationship("Project", back_populates="client", foreign_keys="Project.client_id")
     files = relationship("File", back_populates="uploader")
     
