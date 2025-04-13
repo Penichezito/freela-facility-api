@@ -82,6 +82,14 @@ Este projeto segue uma arquitetura de microserviços, composta por três compone
    - Frontend: http://localhost:3000
    - API Principal: http://localhost:8000/docs
    - API de Processamento: http://localhost:5000/health
+  
+### Comandos para reinicialização e reconstrução do Docker Compose:
+```bash
+docker-compose down
+docker-compose build api
+docker-compose up -d
+
+```
 
 ### Desenvolvimento Local (Sem Docker)
 
