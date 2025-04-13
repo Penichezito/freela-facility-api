@@ -1,8 +1,8 @@
 import secrets
 from typing import Any, Dict, List, Optional, Union
 
-from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator
-
+from pydantic.v1 import AnyHttpUrl, BaseSettings, PostgresDsn, validator
+from pydantic_settings import BaseSettings  # Alterado aqui
 
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str = "postgres"
     POSTGRES_PASSWORD: str = "postgres"
     POSTGRES_DB: str = "freela_facility"
+
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 
     # External service URLs
