@@ -83,6 +83,13 @@ Este projeto segue uma arquitetura de microserviços, composta por três compone
    - API Principal: http://localhost:8000/docs
    - API de Processamento: http://localhost:5000/health
   
+6. Caso não apareçam tente inicializar os serviços explícitamente
+```
+bash
+
+docker-compose up -d api file-processor
+```
+
 ### Comandos para reinicialização e reconstrução do Docker Compose:
 ```bash
 docker-compose down
