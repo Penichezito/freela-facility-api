@@ -101,6 +101,8 @@ Consulte os READMEs específicos em cada diretório de componente para instruç�
 
 ## Funcionalidades Principais
 
+![Arquitetura do Sistema](https://github.com/Penichezito/freela-facility-api/blob/main/assets/Diagrama%20Componentes%20FF-2025-04-13-175638.png)
+
 - **Autenticação e Gerenciamento de Usuários**
   - Registro de freelancers e clientes
   - Autenticação JWT
