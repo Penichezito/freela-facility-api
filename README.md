@@ -48,9 +48,9 @@ Este projeto segue uma arquitetura de microserviços, composta por três compone
 
 ## Repositórios de Componentes
 
-- [API Principal](https://github.com/seu-usuario/freela-facility-api)
-- [API de Processamento de Arquivos](https://github.com/seu-usuario/freela-facility-file-processor)
-- [Frontend](https://github.com/seu-usuario/freela-facility-frontend)
+- [API Principal](https://github.com/Penichezito/freela-facility-api)
+- [API de Processamento de Arquivos]((https://github.com/Penichezito/freela-facility-file-processor)r)
+- [Frontend](https://github.com/Penichezito/freela-facility-frontend)
 
 ## Configuração e Execução
 
